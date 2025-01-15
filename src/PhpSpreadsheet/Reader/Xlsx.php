@@ -1348,7 +1348,11 @@ class Xlsx extends BaseReader
                                                     if (isset($style['margin-left'])) {
                                                         $hfImages[$shapeId]->setOffsetX($style['margin-left']);
                                                     }
-                                                    $hfImages[$shapeId]->setOffsetY($style['margin-top']);
+                                                    if (isset($style['margin-top'])) {
+                                                        $hfImages[$shapeId]->setOffsetY($style['margin-top']);
+                                                    } else {
+                                                        $hfImages[$shapeId]->setOffsetY(0); // Define um valor padrão se a margem não estiver presente
+                                                    }
                                                     $hfImages[$shapeId]->setResizeProportional(true);
                                                 }
                                             }
